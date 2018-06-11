@@ -5,36 +5,53 @@ $(document).ready(function () {
 
   // event listener for individual boxes
   $('.col-xs-4').on('click', function (event) {
-    console.log('this worked')
+    console.log('this turn worked')
     // $(this).html('x') -good idea but dont need to change html for this rn
     // 'this' always becomes the box that you select
     const boxSelected = $(this)
+    const clearMessages = function () {
+      $('#messages').empty()
+    }
+    const resetBoard = function () {
+      $('.col-xs-4').removeClass('X O')
+      $('.col-xs-4').empty()
+      $('#messages').empty()
+    }
 
     // to check if a box is free
     if (boxSelected.hasClass('X') || boxSelected.hasClass('O')) {
-      console.log('this box has already been taken')
+      $('#messages').html('This box has already been taken!')
+      setTimeout(clearMessages, 3000)
     } else {
       // otherwise player 1 can add an x
       if (player === 1) {
         boxSelected.addClass('X')
+        $(this).html('X')
         if (checkIfWon('X')) {
-          console.log('the winner is ' + player)
+          // button to reset or timed?
+          setTimeout(resetBoard, 5000)
+          $('#messages').html('The winner is player ' + player + '!')
         } else {
           // check for winner, if no, next player turn
           player = 2
         }
       } else {
         boxSelected.addClass('O')
+        $(this).html('O')
         if (checkIfWon('O')) {
-          console.log('the winner is ' + player)
+          // button to reset or timed?
+          setTimeout(resetBoard, 5000)
+          $('#messages').html('The winner is player ' + player + '!')
         } else {
           player = 1
         }
       }
     }
+    $('.reset-button').on('click', resetBoard)
   })
 
-// better way than to check each combination?
+  // if ('.row' div).hasClass('X')
+  // better way than to check each combination?
   function checkIfWon (XorO) {
     if ($('.box1').hasClass(XorO) && $('.box2').hasClass(XorO) && $('.box3').hasClass(XorO)) {
       return true
@@ -59,6 +76,16 @@ $(document).ready(function () {
     }
   }
 })
+
+// const gameTied = function () {
+//    if ($('.box1').hasClass(XorO) && $('.box2').hasClass(XorO) && $('.box3').hasClass(XorO) &&
+// $('.box4').hasClass(XorO) && $('.box5').hasClass(XorO) && $('.box6').hasClass(XorO) && $('.box7').hasClass(XorO) && $('.box8').hasClass(XorO) && $('.box9').hasClass(XorO)) {
+// }
+
+// else if($('.box1').hasClass(XorO) && $('.box2').hasClass(XorO) && $('.box3').hasClass(XorO) &&
+// $('.box4').hasClass(XorO) && $('.box5').hasClass(XorO) && $('.box6').hasClass(XorO) && $('.box7').hasClass(XorO)
+// && $('.box8').hasClass(XorO) && $('.box9').hasClass(XorO)) {
+
 // FIRST TRY
 // const events = require('./events')
 // use require with a reference to bundle the file and use it in this file
