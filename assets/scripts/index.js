@@ -2,10 +2,11 @@
 $(document).ready(function () {
 // default to player one
   let player = 1
-
+  let turnsTaken = 1
   // event listener for individual boxes
   $('.col-xs-4').on('click', function (event) {
     console.log('this turn worked')
+    console.log(turnsTaken)
     // $(this).html('x') -good idea but dont need to change html for this rn
     // 'this' always becomes the box that you select
     const boxSelected = $(this)
@@ -16,8 +17,13 @@ $(document).ready(function () {
       $('.col-xs-4').removeClass('X O')
       $('.col-xs-4').empty()
       $('#messages').empty()
+      turnsTaken = 1
+      player = 1
     }
-
+    if (turnsTaken === 9) {
+      $('#messages').html('This game is a tie!')
+      setTimeout(resetBoard, 5000)
+    }
     // to check if a box is free
     if (boxSelected.hasClass('X') || boxSelected.hasClass('O')) {
       $('#messages').html('This box has already been taken!')
@@ -27,6 +33,7 @@ $(document).ready(function () {
       if (player === 1) {
         boxSelected.addClass('X')
         $(this).html('X')
+        turnsTaken = turnsTaken + 1
         if (checkIfWon('X')) {
           // button to reset or timed?
           setTimeout(resetBoard, 5000)
@@ -38,6 +45,7 @@ $(document).ready(function () {
       } else {
         boxSelected.addClass('O')
         $(this).html('O')
+        turnsTaken = turnsTaken + 1
         if (checkIfWon('O')) {
           // button to reset or timed?
           setTimeout(resetBoard, 5000)
@@ -49,7 +57,6 @@ $(document).ready(function () {
     }
     $('.reset-button').on('click', resetBoard)
   })
-
   // if ('.row' div).hasClass('X')
   // better way than to check each combination?
   function checkIfWon (XorO) {
