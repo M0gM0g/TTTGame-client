@@ -1,6 +1,6 @@
 'use strict'
 $(document).ready(function () {
-// default to player one
+  // default to player one
   let player = 1
   let turnsTaken = 1
   // event listener for individual boxes
@@ -57,6 +57,7 @@ $(document).ready(function () {
     }
     $('.reset-button').on('click', resetBoard)
   })
+
   // if ('.row' div).hasClass('X')
   // better way than to check each combination?
   function checkIfWon (XorO) {
@@ -83,7 +84,6 @@ $(document).ready(function () {
     }
   }
 })
-
 // const gameTied = function () {
 //    if ($('.box1').hasClass(XorO) && $('.box2').hasClass(XorO) && $('.box3').hasClass(XorO) &&
 // $('.box4').hasClass(XorO) && $('.box5').hasClass(XorO) && $('.box6').hasClass(XorO) && $('.box7').hasClass(XorO) && $('.box8').hasClass(XorO) && $('.box9').hasClass(XorO)) {
@@ -145,6 +145,11 @@ $(document).ready(function () {
 //   $(this).html('X with a function & refactored')
 // })
 
+const authEvents = require('/Users/markoleary/wdi/projects/TTTGame-client/assets/scripts/events')
+
 $(() => {
-  // events.addHandlers()
+  $('#sign-up-form').on('submit', authEvents.onSignUp)
+  $('#sign-in-form').on('submit', authEvents.onSignIn)
+  $('#sign-out').on('click', authEvents.onSignOut)
+  $('#change-password-form').on('submit', authEvents.onChangePassword)
 })
