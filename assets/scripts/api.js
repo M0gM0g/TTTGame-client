@@ -39,9 +39,59 @@ const signOut = function () {
     }
   })
 }
+
+const getGames = function () {
+  return $.ajax({
+    method: 'GET',
+    url: 'https://tic-tac-toe-wdi.herokuapp.com/games/$ID',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
+const createGame = function () {
+  return $.ajax({
+    method: 'POST',
+    url: 'https://tic-tac-toe-wdi.herokuapp.com/games/',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
+const getGame = function (data) {
+  data = JSON.stringify(data)
+  return $.ajax({
+    method: 'GET',
+    url: 'https://tic-tac-toe-wdi.herokuapp.com/games',
+    header: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    contentType: 'application/json'
+  })
+}
+
+const gameUpdate = function (data) {
+  data = JSON.stringify(data)
+  return $.ajax({
+    url: 'https://tic-tac-toe-wdi.herokuapp.com/games/' + store.game.id,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    contentType: 'application/json',
+    data
+  })
+}
 module.exports = {
   signUp: signUp,
   signIn: signIn,
   changePassword: changePassword,
-  signOut: signOut
+  signOut: signOut,
+  getGames: getGames,
+  createGame: createGame,
+  getGame: getGame,
+  gameUpdate: gameUpdate
+
 }

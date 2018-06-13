@@ -1,6 +1,21 @@
 'use strict'
+const store = require('/Users/markoleary/wdi/projects/TTTGame-client/assets/scripts/store')
+
 $(document).ready(function () {
   // default to player one
+  $('#start-button').hide()
+  $('#change-password').hide()
+  $('#change-password-form').hide()
+  $('#change-password-button-only').hide()
+  $('#sign-out').hide()
+  $('.get-games').hide()
+
+  // const gameOverCheck = function () {
+  //   if (checkIfWon === true) {
+  //     let gameOver = true
+  //   }
+  //   }
+  //    }
   let player = 1
   let turnsTaken = 1
   // event listener for individual boxes
@@ -22,6 +37,7 @@ $(document).ready(function () {
     }
     if (turnsTaken === 9) {
       $('#messages').html('This game is a tie!')
+      store.gameOver = true
       setTimeout(resetBoard, 5000)
     }
     // to check if a box is free
@@ -62,25 +78,25 @@ $(document).ready(function () {
   // better way than to check each combination?
   function checkIfWon (XorO) {
     if ($('.box1').hasClass(XorO) && $('.box2').hasClass(XorO) && $('.box3').hasClass(XorO)) {
-      return true
+      store.gameOver = true
     } else if ($('.box4').hasClass(XorO) && $('.box5').hasClass(XorO) && $('.box6').hasClass(XorO)) {
-      return true
+      store.gameOver = true
     } else if ($('.box7').hasClass(XorO) && $('.box8').hasClass(XorO) && $('.box9').hasClass(XorO)) {
-      return true
+      store.gameOver = true
     } else if ($('.box1').hasClass(XorO) && $('.box4').hasClass(XorO) && $('.box7').hasClass(XorO)) {
-      return true
+      store.gameOver = true
     } else if ($('.box2').hasClass(XorO) && $('.box5').hasClass(XorO) && $('.box8').hasClass(XorO)) {
-      return true
+      store.gameOver = true
     } else if ($('.box3').hasClass(XorO) && $('.box6').hasClass(XorO) && $('.box9').hasClass(XorO)) {
-      return true
+      store.gameOver = true
     } else if ($('.box1').hasClass(XorO) && $('.box5').hasClass(XorO) && $('.box9').hasClass(XorO)) {
-      return true
+      store.gameOver = true
     } else if ($('.box3').hasClass(XorO) && $('.box6').hasClass(XorO) && $('.box9').hasClass(XorO)) {
-      return true
+      store.gameOver = true
     } else if ($('.box3').hasClass(XorO) && $('.box5').hasClass(XorO) && $('.box7').hasClass(XorO)) {
-      return true
+      store.gameOver = true
     } else {
-      return false
+      store.gameOver = false
     }
   }
 })
@@ -152,4 +168,7 @@ $(() => {
   $('#sign-in-form').on('submit', authEvents.onSignIn)
   $('#sign-out').on('click', authEvents.onSignOut)
   $('#change-password-form').on('submit', authEvents.onChangePassword)
+  $('#change-password-button-only').on('click', authEvents.onClickChangePasswordButton)
+  $('#start-button').on('click', authEvents.onCreateGame)
+  $('#get-game').on('submit', authEvents.onGetGames)
 })

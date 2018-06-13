@@ -39,9 +39,33 @@ const onSignOut = function (event) {
     .then(authUi.signOutSuccess)
     .catch(authUi.signOutFailure)
 }
+
+const onClickChangePasswordButton = function (event) {
+  event.preventDefault()
+  authUi.clickPasswordButton()
+  console.log('Password change button clicked')
+}
+
+const onCreateGame = function (event) {
+  event.preventDefault()
+  authApi.createGame()
+    .then(authUi.createGameSuccess)
+    .catch(authUi.createGameFailure)
+}
+
+const onGetGames = function (event) {
+  event.preventDefault()
+  authApi.getGame()
+    .then(authUi.getGameSuccess)
+    .catch(authUi.getGameFailure)
+}
+
 module.exports = {
   onSignUp: onSignUp,
   onSignIn: onSignIn,
   onChangePassword: onChangePassword,
-  onSignOut: onSignOut
+  onSignOut: onSignOut,
+  onClickChangePasswordButton: onClickChangePasswordButton,
+  onCreateGame: onCreateGame,
+  onGetGames: onGetGames
 }
