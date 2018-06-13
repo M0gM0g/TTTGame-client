@@ -2,44 +2,45 @@
 const store = require('/Users/markoleary/wdi/projects/TTTGame-client/assets/scripts/store')
 
 const clearMessages = function () {
-  $('#messages').empty()
+  $('.messages').empty()
 }
 
 const signUpSuccess = function (signUpResponse) {
   console.log('signUpResponse is ', signUpResponse)
   $('#sign-up-form').hide()
-  $('#change-password-button-only').hide()
+  $('.change-password-button-only').hide()
   $('#sign-up').hide()
-  $('#messages').html('You have successfully signed up! Please sign in!')
+  $('.messages').html('You have successfully signed up! Please sign in!')
   setTimeout(clearMessages, 5000)
 }
 
 const signUpError = function (error) {
   console.log('Error in sign up is ', error)
-  $('#messages').html('There was an error signing up! Please try again.')
+  $('.messages').html('There was an error signing up! Please try again.')
 }
 
 const signInSuccess = function (response) {
   console.log('signInResponse is ', response)
   store.user = response.user
 
-  $('#start-button').show()
   $('#change-password-button-only').show()
   $('#sign-in-form, #sign-in, #sign-up, #sign-up-form').hide()
-  $('.get-games').show()
-  $('#messages').html("Welcome to Tic-Tac-Toe! Let's Play")
-  setTimeout(clearMessages, 5000)
+  // $('.get-games').show()
+  $('.messages').html("Welcome to Tic-Tac-Toe, Player X! Let's Play!")
+  $('.container-fluid').show()
+  $('.row').show()
+  setTimeout(clearMessages, 8000)
 }
 
 const signInError = function (error) {
   console.error('signInError is ', error)
-  $('#messages').html('Ooops! There was a problem signing in.')
+  $('.messages').html('Ooops! There was a problem signing in.')
   setTimeout(clearMessages, 5000)
 }
 
 const changePasswordSuccess = function (response) {
   console.log('You successfully changed your password')
-  $('#messages').html('You successfully changed your password!')
+  $('.messages').html('You successfully changed your password!')
   setTimeout(clearMessages, 5000)
   $('#change-password-form').trigger('reset')
   $('#change-password').hide()
@@ -68,11 +69,11 @@ const clickPasswordButton = function (event) {
 }
 
 const createGameSuccess = function (data) {
-  console.log('this worked! ', data)
   store.game = data.game
   store.game.id = data.game.id
   store.game.cells = data.game.cells
   store.game.over = data.game.over
+  console.log('this worked! ', data)
 }
 
 const createGameFailure = function (error) {

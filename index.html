@@ -14,20 +14,29 @@
 
 <body>
 
-  <h1>TTT</h1>
-  <h2 id="messages"></h2>
+  <div>
+    <h1 class="banner">Tic-Tac-Toe</h1>
 
-<h2 class="get-games">Enter your game ID to view game!</h2>
+  </div>
+  <div>
+    <h2 class="messages"></h2>
+  </div>
 
-<!-- <button class="get-games" id="get-games" type="button">View Games</button> -->
+
+  <!-- <h2 class="get-games">Enter your game ID to view game!</h2>
+
+<button class="get-games" id="get-games" type="button">View Games</button>
 <form class="get-games">
   <br>
   <input id="get-game" type="text" name="Game ID #" placeholder="Enter ID #">
   <input type="submit" value="$ID">
-</form>
+</form> -->
+
+  <div>
+    <button id="start-button" type="button">Click to start!</button>
+  </div>
 
 
-  <button id="start-button" type="button">Click to start!</button>
   <div class="container-fluid">
 
     <div class="row">
@@ -46,21 +55,30 @@
       <div class="col-xs-4 box9"></div>
     </div>
   </div>
+
   <h3 id='sign-up'> Sign Up </h3>
+
   <form id='sign-up-form'>
     <input name="credentials[email]" placeholder="Email" type="email" />
     <input name="credentials[password]" placeholder="Password" type="password" />
     <input name="credentials[password_confirmation]" placeholder="Password Confirmation" type="password" />
-    <button type="submit">Sign Up</button>
+
+    <div class="sign-up-button">
+      <button type="submit">Sign Up</button>
+    </div>
   </form>
+
   <h3 id='sign-in'> Sign In </h3>
+
   <form id='sign-in-form'>
     <input name="credentials[email]" placeholder="Email" type="email" />
     <input name="credentials[password]" placeholder="Password" type="password" />
     <button type="submit">Log In</button>
   </form>
 
-  <button id='change-password-button-only' type='button'>Click to Change Password</button>
+  <div>
+    <button class='change-password-button-only' type='button'>Click to Change Password</button>
+  </div>
 
   <h3 id='change-password'> Change Password </h3>
   <form id='change-password-form'>

@@ -6,9 +6,10 @@ $(document).ready(function () {
   $('#start-button').hide()
   $('#change-password').hide()
   $('#change-password-form').hide()
-  $('#change-password-button-only').hide()
+  $('.change-password-button-only').hide()
   $('#sign-out').hide()
   $('.get-games').hide()
+  $('.row').hide()
 
   // const gameOverCheck = function () {
   //   if (checkIfWon === true) {
@@ -26,23 +27,23 @@ $(document).ready(function () {
     // 'this' always becomes the box that you select
     const boxSelected = $(this)
     const clearMessages = function () {
-      $('#messages').empty()
+      $('.messages').empty()
     }
     const resetBoard = function () {
       $('.col-xs-4').removeClass('X O')
       $('.col-xs-4').empty()
-      $('#messages').empty()
+      $('.messages').empty()
       turnsTaken = 1
       player = 1
     }
     if (turnsTaken === 9) {
-      $('#messages').html('This game is a tie!')
+      $('.messages').html('This game is a tie!')
       store.gameOver = true
       setTimeout(resetBoard, 5000)
     }
     // to check if a box is free
     if (boxSelected.hasClass('X') || boxSelected.hasClass('O')) {
-      $('#messages').html('This box has already been taken!')
+      $('.messages').html('This box has already been taken!')
       setTimeout(clearMessages, 3000)
     } else {
       // otherwise player 1 can add an x
@@ -53,7 +54,7 @@ $(document).ready(function () {
         if (checkIfWon('X')) {
           // button to reset or timed?
           setTimeout(resetBoard, 5000)
-          $('#messages').html('The winner is player ' + player + '!')
+          $('.messages').html("You're the winner! Nice job, X!")
         } else {
           // check for winner, if no, next player turn
           player = 2
@@ -65,7 +66,7 @@ $(document).ready(function () {
         if (checkIfWon('O')) {
           // button to reset or timed?
           setTimeout(resetBoard, 5000)
-          $('#messages').html('The winner is player ' + player + '!')
+          $('.messages').html('You Lost! Destroyed by O!')
         } else {
           player = 1
         }
@@ -78,25 +79,25 @@ $(document).ready(function () {
   // better way than to check each combination?
   function checkIfWon (XorO) {
     if ($('.box1').hasClass(XorO) && $('.box2').hasClass(XorO) && $('.box3').hasClass(XorO)) {
-      store.gameOver = true
+      return true
     } else if ($('.box4').hasClass(XorO) && $('.box5').hasClass(XorO) && $('.box6').hasClass(XorO)) {
-      store.gameOver = true
+      return true
     } else if ($('.box7').hasClass(XorO) && $('.box8').hasClass(XorO) && $('.box9').hasClass(XorO)) {
-      store.gameOver = true
+      return true
     } else if ($('.box1').hasClass(XorO) && $('.box4').hasClass(XorO) && $('.box7').hasClass(XorO)) {
-      store.gameOver = true
+      return true
     } else if ($('.box2').hasClass(XorO) && $('.box5').hasClass(XorO) && $('.box8').hasClass(XorO)) {
-      store.gameOver = true
+      return true
     } else if ($('.box3').hasClass(XorO) && $('.box6').hasClass(XorO) && $('.box9').hasClass(XorO)) {
-      store.gameOver = true
+      return true
     } else if ($('.box1').hasClass(XorO) && $('.box5').hasClass(XorO) && $('.box9').hasClass(XorO)) {
-      store.gameOver = true
+      return true
     } else if ($('.box3').hasClass(XorO) && $('.box6').hasClass(XorO) && $('.box9').hasClass(XorO)) {
-      store.gameOver = true
+      return true
     } else if ($('.box3').hasClass(XorO) && $('.box5').hasClass(XorO) && $('.box7').hasClass(XorO)) {
-      store.gameOver = true
+      return true
     } else {
-      store.gameOver = false
+      return false
     }
   }
 })
@@ -169,6 +170,6 @@ $(() => {
   $('#sign-out').on('click', authEvents.onSignOut)
   $('#change-password-form').on('submit', authEvents.onChangePassword)
   $('#change-password-button-only').on('click', authEvents.onClickChangePasswordButton)
-  $('#start-button').on('click', authEvents.onCreateGame)
+  // $('#start-button').on('click', authEvents.onCreateGame)
   $('#get-game').on('submit', authEvents.onGetGames)
 })
