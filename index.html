@@ -1,17 +1,96 @@
 <!DOCTYPE html>
 <html>
-    <head>
-      <title>Example</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      <!-- Do not add `link` tags-->
-      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tic-Tac-Toe</title>
+  <!-- Do not add `link` tags-->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 
-      <!-- Do not add `script` tags-->
-      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
-      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
-    </head>
-    <body>
-      <h1>Browser Template</h1>
-    </body>
+  <!-- Do not add `script` tags-->
+  <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+  <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+</head>
+
+<body>
+
+  <div>
+    <h1 class="banner">Tic-Tac-Toe</h1>
+
+  </div>
+  <div>
+    <h2 class="messages"></h2>
+  </div>
+
+
+  <!-- <h2 class="get-games">Enter your game ID to view game!</h2>
+
+<button class="get-games" id="get-games" type="button">View Games</button>
+<form class="get-games">
+  <br>
+  <input id="get-game" type="text" name="Game ID #" placeholder="Enter ID #">
+  <input type="submit" value="$ID">
+</form> -->
+
+  <div>
+    <button id="start-button" type="button">Click to start!</button>
+  </div>
+
+
+  <div class="container-fluid">
+
+    <div class="row">
+      <div class="col-xs-4 box1"></div>
+      <div class="col-xs-4 box2"></div>
+      <div class="col-xs-4 box3"></div>
+    </div>
+    <div class="row">
+      <div class="col-xs-4 box4"></div>
+      <div class="col-xs-4 box5"></div>
+      <div class="col-xs-4 box6"></div>
+    </div>
+    <div class="row">
+      <div class="col-xs-4 box7"></div>
+      <div class="col-xs-4 box8"></div>
+      <div class="col-xs-4 box9"></div>
+    </div>
+  </div>
+
+  <h3 id='sign-up'> Sign Up </h3>
+
+  <form id='sign-up-form'>
+    <input name="credentials[email]" placeholder="Email" type="email" />
+    <input name="credentials[password]" placeholder="Password" type="password" />
+    <input name="credentials[password_confirmation]" placeholder="Password Confirmation" type="password" />
+
+    <div class="sign-up-button">
+      <button type="submit">Sign Up</button>
+    </div>
+  </form>
+
+  <h3 id='sign-in'> Sign In </h3>
+
+  <form id='sign-in-form'>
+    <input name="credentials[email]" placeholder="Email" type="email" />
+    <input name="credentials[password]" placeholder="Password" type="password" />
+    <button type="submit">Log In</button>
+  </form>
+
+  <div>
+    <button class='change-password-button-only' type='button'>Click to Change Password</button>
+  </div>
+
+  <h3 id='change-password'> Change Password </h3>
+  <form id='change-password-form'>
+    <input name="passwords[old]" placeholder="Old Password" type="password" />
+    <input name="passwords[new]" placeholder="New Password" type="password" />
+    <button type="submit">Change Password</button>
+  </form>
+
+  <section>
+    <button id='sign-out'> Sign Out </button>
+  </section>
+
+</body>
+
 </html>
