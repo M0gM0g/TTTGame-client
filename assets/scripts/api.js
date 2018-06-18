@@ -1,6 +1,5 @@
 'use strict'
-
-const store = require('/Users/markoleary/wdi/projects/TTTGame-client/assets/scripts/store')
+const store = require('./store')
 
 const signUp = function (data) {
   return $.ajax({
@@ -40,16 +39,6 @@ const signOut = function () {
   })
 }
 
-const getGames = function () {
-  return $.ajax({
-    method: 'GET',
-    url: 'https://tic-tac-toe-wdi.herokuapp.com/games/$ID',
-    headers: {
-      Authorization: 'Token token=' + store.user.token
-    }
-  })
-}
-
 const createGame = function () {
   return $.ajax({
     method: 'POST',
@@ -60,7 +49,7 @@ const createGame = function () {
   })
 }
 
-const getGame = function (data) {
+const getGames = function (data) {
   data = JSON.stringify(data)
   return $.ajax({
     method: 'GET',
@@ -68,7 +57,8 @@ const getGame = function (data) {
     header: {
       Authorization: 'Token token=' + store.user.token
     },
-    contentType: 'application/json'
+    contentType: 'application/json',
+    data: data
   })
 }
 
@@ -91,7 +81,5 @@ module.exports = {
   signOut: signOut,
   getGames: getGames,
   createGame: createGame,
-  getGame: getGame,
   gameUpdate: gameUpdate
-
 }

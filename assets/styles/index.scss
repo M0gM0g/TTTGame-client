@@ -2,13 +2,9 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 
-// $background-color: white;
-// $font-color: black;
-// $white: #fff;
-// $grey: rgb(128, 128, 128);
-// $black: #000;
-// need to use hex for colors
-// need lots of work here
+#change-password-form {
+  padding-top: 15px;
+}
 
 .messages {
   text-align: center;
@@ -71,4 +67,9 @@ body {
 #photo {
   width: 500px;
   height: 436px;
+}
+
+#sign-out {
+  margin-top: 30px;
+  margin-left: 30px;
 }

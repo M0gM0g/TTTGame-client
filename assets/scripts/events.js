@@ -1,8 +1,8 @@
 'use strict'
-
-const getFormFields = require('/Users/markoleary/wdi/projects/TTTGame-client/lib/get-form-fields')
-const authApi = require('/Users/markoleary/wdi/projects/TTTGame-client/assets/scripts/api')
-const authUi = require('/Users/markoleary/wdi/projects/TTTGame-client/assets/scripts/ui')
+const getFormFields = require('../../lib/get-form-fields')
+const authApi = require('./api')
+const authUi = require('./ui')
+const store = require('./store')
 
 const onSignUp = function (event) {
   event.preventDefault()
@@ -54,10 +54,25 @@ const onCreateGame = function (event) {
 }
 
 const onGetGames = function (event) {
+  const data = {
+    'game': {
+      'id': '',
+      'cells': ['', '', '', '', '', '', '', '', ''],
+      'over': store.gameOver,
+      'player_x': {
+        'id': store.user.id,
+        'email': store.user.email
+      },
+      'player_o': {
+        'id': '',
+        'email': ''
+      }
+    }
+  }
   event.preventDefault()
-  authApi.getGame()
-    .then(authUi.getGameSuccess)
-    .catch(authUi.getGameFailure)
+  authApi.getGames(data)
+    .then(authUi.getGamesSuccess)
+    .catch(authUi.getGamesFailure)
 }
 
 module.exports = {
