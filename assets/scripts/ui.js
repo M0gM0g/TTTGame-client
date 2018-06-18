@@ -1,5 +1,6 @@
 'use script'
-const store = require('/Users/markoleary/wdi/projects/TTTGame-client/assets/scripts/store')
+const store = require('./store')
+const authApi = require('./api')
 
 const clearMessages = function () {
   $('.messages').empty()
@@ -8,9 +9,8 @@ const clearMessages = function () {
 const signUpSuccess = function (signUpResponse) {
   console.log('signUpResponse is ', signUpResponse)
   $('#sign-up-form').hide()
-  $('.change-password-button-only').hide()
   $('#sign-up').hide()
-  $('.messages').html('You have successfully signed up! Please sign in!')
+  $('.messages').html('You have successfully signed up! Please log in!')
   setTimeout(clearMessages, 5000)
 }
 
@@ -20,21 +20,20 @@ const signUpError = function (error) {
 }
 
 const signInSuccess = function (response) {
-  console.log('signInResponse is ', response)
   store.user = response.user
-
-  $('#change-password-button-only').show()
   $('#sign-in-form, #sign-in, #sign-up, #sign-up-form').hide()
-  // $('.get-games').show()
-  $('.messages').html("Welcome to Tic-Tac-Toe, Player X! Let's Play!")
-  $('.container-fluid').show()
-  $('.row').show()
-  setTimeout(clearMessages, 8000)
+  $('#change-password').show()
+  $('.messages').html('Welcome to Tic-Tac-Toe, Player X! Click New Game to Play!')
+  $('#sign-out').show()
+  $('#change-password-form').show()
+  $('#start-button').show()
+  $('#sign-in-form, #sign-in, #sign-up, #sign-up-form').trigger('reset')
+  // authApi.getGames()
 }
 
 const signInError = function (error) {
   console.error('signInError is ', error)
-  $('.messages').html('Ooops! There was a problem signing in.')
+  $('.messages').html('Ooops! There was a problem signing in. Try again')
   setTimeout(clearMessages, 5000)
 }
 
@@ -53,12 +52,23 @@ const changePasswordFailure = function (error) {
 }
 
 const signOutSuccess = function (response) {
-  console.log('You have signed out')
+  $('.messages').html('You have successfully signed out!')
+  $('#start-button').hide()
+  $('#change-password').hide()
+  $('#change-password-form').hide()
+  $('.change-password-button-only').hide()
+  $('#sign-out').hide()
+  $('.get-games').hide()
+  $('.row').hide()
   delete store.user
+  setTimeout(clearMessages, 5000)
+  $('#sign-up-form').show()
+  $('#sign-in-form').show()
 }
 
 const signOutFailure = function (error) {
-  console.error('There was an error signing you out, here it is :', error)
+  console.log(error)
+  setTimeout(clearMessages, 5000)
 }
 
 const clickPasswordButton = function (event) {
@@ -73,22 +83,30 @@ const createGameSuccess = function (data) {
   store.game.id = data.game.id
   store.game.cells = data.game.cells
   store.game.over = data.game.over
+  $('.container-fluid').show()
+  $('.row').show()
+  $('#start-button').hide()
+  clearMessages()
   console.log('this worked! ', data)
 }
 
 const createGameFailure = function (error) {
+  $('.messages').html('Oooops, something went wrong! Try again')
+  setTimeout(clearMessages, 5000)
   console.log('Could not create game : ', error)
 }
 
-const getGameSuccess = function (data) {
+const getGamesSuccess = function (data) {
   store.game = data.game
   store.game.id = data.game.id
   store.game.cells = data.game.cells
   store.game.over = data.game.over
-  console.log('get game data is ', data)
+  console.log('get game data is ', data.games)
 }
 
-const getGameFailure = function (error) {
+const getGamesFailure = function (error) {
+  $('.messages').html('Oooops, something went wrong! Try again')
+  setTimeout(clearMessages, 5000)
   console.log('error with this ', error)
 }
 
@@ -104,6 +122,6 @@ module.exports = {
   clickPasswordButton: clickPasswordButton,
   createGameSuccess: createGameSuccess,
   createGameFailure: createGameFailure,
-  getGameSuccess: getGameSuccess,
-  getGameFailure: getGameFailure
+  getGamesSuccess: getGamesSuccess,
+  getGamesFailure: getGamesFailure
 }
