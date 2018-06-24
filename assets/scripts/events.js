@@ -3,6 +3,7 @@ const getFormFields = require('../../lib/get-form-fields')
 const authApi = require('./api')
 const authUi = require('./ui')
 const store = require('./store')
+// const boxSelected = require('./index')
 
 const onSignUp = function (event) {
   event.preventDefault()
@@ -43,7 +44,6 @@ const onSignOut = function (event) {
 const onClickChangePasswordButton = function (event) {
   event.preventDefault()
   authUi.clickPasswordButton()
-  console.log('Password change button clicked')
 }
 
 const onCreateGame = function (event) {
@@ -75,6 +75,22 @@ const onGetGames = function (event) {
     .catch(authUi.getGamesFailure)
 }
 
+const onUpdateGame = function (event) {
+  const data = {
+    'game': {
+      'cell': {
+        'index': store.index,
+        'value': store.cells
+      },
+      'over': store.gameOver
+    }
+  }
+  event.preventDefault()
+  authApi.updateGame(data)
+    .then(authUi.updateGamesSuccess)
+    .catch(authUi.updateGamesFailure)
+}
+
 module.exports = {
   onSignUp: onSignUp,
   onSignIn: onSignIn,
@@ -82,5 +98,6 @@ module.exports = {
   onSignOut: onSignOut,
   onClickChangePasswordButton: onClickChangePasswordButton,
   onCreateGame: onCreateGame,
-  onGetGames: onGetGames
+  onGetGames: onGetGames,
+  onUpdateGame: onUpdateGame
 }

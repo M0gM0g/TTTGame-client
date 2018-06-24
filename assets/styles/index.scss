@@ -2,6 +2,40 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 
+#sign-up {
+  margin-left: 15px;
+  margin-bottom: 10px;
+}
+
+#sign-up-form {
+  margin-left: 15px;
+  margin-bottom: 10px;
+}
+
+#sign-in {
+  margin-left: 15px;
+  margin-bottom: 10px;
+}
+
+#sign-in-form {
+  margin-left: 15px;
+  margin-bottom: 10px;
+}
+
+#start-button {
+  // padding-left: 15px;
+  // border-left: 15px;
+  margin-left: 15px;
+  margin-bottom: 10px;
+}
+
+#get-games {
+  // padding-left: 15px;
+  // border-left: 15px;
+  margin-left: 15px;
+  margin-top: 10px;
+}
+
 #change-password-form {
   padding-top: 15px;
 }
@@ -9,6 +43,10 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 .messages {
   text-align: center;
   font-family: "Times New Roman", Times, serif;
+}
+
+.get-games-message {
+  text-align: center;
 }
 
 body {

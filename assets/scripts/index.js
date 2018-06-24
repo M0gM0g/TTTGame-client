@@ -9,22 +9,29 @@ $(document).ready(function () {
   $('#change-password-form').hide()
   $('.change-password-button-only').hide()
   $('#sign-out').hide()
-  $('.get-games').hide()
+  $('#get-games').hide()
   $('.row').hide()
   $('#start-button').hide()
 
   let player = 1
-  let turnsTaken = 1
+  let turnsTaken = 0
   store.gameOver = false
 
   $('.col-xs-4').on('click', function (event) {
-    console.log('this turn worked')
-    console.log(turnsTaken)
-
+    // turnsTaken = turnsTaken + 1
+    // console.log(turnsTaken)
     const boxSelected = $(this)
     const clearMessages = function () {
       $('.messages').empty()
     }
+    const checkIfTie = function () {
+      if (turnsTaken === 9 && store.gameOver === false) {
+        $('.messages').html('This game is a tie!')
+        setTimeout(resetBoard, 5000)
+        store.gameOver = true
+      }
+    }
+
     const resetBoard = function () {
       $('.col-xs-4').removeClass('X O')
       $('.col-xs-4').empty()
@@ -33,14 +40,13 @@ $(document).ready(function () {
       $('.row').hide()
       $('.messages').html('Click new game to play again!')
       $('#start-button').show()
-      turnsTaken = 1
+      turnsTaken = 0
       player = 1
       store.gameOver = false
     }
-    if (turnsTaken === 9 && $(this).has('')) {
-      if (player === 1)
-        $('.messages').html('This game is a tie!')
-      store.gameOver = true
+
+    if (turnsTaken === 9 && store.gameOver === false) {
+      $('.messages').html('This game is a tie!')
       setTimeout(resetBoard, 5000)
     }
 
@@ -51,10 +57,20 @@ $(document).ready(function () {
       if (player === 1 && store.gameOver === false) {
         boxSelected.addClass('X')
         $(this).html('X')
+        // store.game.cells = $(this).val('X')
+        const idString = $(this).attr('id')
+        const indexNum = idString.substr(idString.length - 1)
+        // store.game.cells =
+        store.index = Number(indexNum)
+        // console.log('cell value is ' + store.game.cells)
+
         turnsTaken = turnsTaken + 1
+        checkIfTie()
         if (checkIfWon('X')) {
           $('.messages').html("You're the winner! Nice job, X!")
           store.gameOver = true
+          // store.index = boxSelected.text()
+          // store.game.cells = boxSelected.text()
           setTimeout(resetBoard, 5000)
         } else {
           player = 2
@@ -63,10 +79,19 @@ $(document).ready(function () {
         if (store.gameOver === false) {
           boxSelected.addClass('O')
           $(this).html('O')
+          // store.game.cells = $(this).val()
+          const idString = $(this).attr('id')
+          const indexNum = idString.substr(idString.length - 1)
+          // store.game.cells =
+          store.index = Number(indexNum)
+          // console.log('cell value is ' + store.game.cells)
           turnsTaken = turnsTaken + 1
+          checkIfTie()
           if (checkIfWon('O')) {
             $('.messages').html('You Lost! Destroyed by O!')
             store.gameOver = true
+            // store.index = boxSelected.text
+            // store.game.cells = boxSelected.text()
             setTimeout(resetBoard, 5000)
           } else {
             player = 1
@@ -74,7 +99,6 @@ $(document).ready(function () {
         }
       }
     }
-    $('.reset-button').on('click', resetBoard)
   })
 
   function checkIfWon (XorO) {
@@ -102,6 +126,14 @@ $(document).ready(function () {
   }
 })
 
+// function checkIfTie () {
+//   if (turnsTaken === 9 && store.gameOver === false) {
+//     $('.messages').html('This game is a tie!')
+//     setTimeout(resetBoard, 5000)
+//     store.gameOver = true
+//   }
+// }
+
 $(() => {
   $('#sign-up-form').on('submit', authEvents.onSignUp)
   $('#sign-in-form').on('submit', authEvents.onSignIn)
@@ -109,5 +141,6 @@ $(() => {
   $('#change-password-form').on('submit', authEvents.onChangePassword)
   $('#change-password-button-only').on('click', authEvents.onClickChangePasswordButton)
   $('#start-button').on('click', authEvents.onCreateGame)
-  $('#get-games').on('submit', authEvents.onGetGame)
+  $('#get-games').on('click', authEvents.onGetGames)
+  $('.col-xs-4').on('click', authEvents.onUpdateGame)
 })

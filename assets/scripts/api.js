@@ -1,10 +1,11 @@
 'use strict'
 const store = require('./store')
+const config = require('./config')
 
 const signUp = function (data) {
   return $.ajax({
     method: 'POST',
-    url: 'https://tic-tac-toe-wdi.herokuapp.com/sign-up',
+    url: config.apiUrl + '/sign-up',
     data: data
   })
 }
@@ -12,16 +13,15 @@ const signUp = function (data) {
 const signIn = function (data) {
   return $.ajax({
     method: 'POST',
-    url: 'https://tic-tac-toe-wdi.herokuapp.com/sign-in',
+    url: config.apiUrl + '/sign-in',
     data: data
   })
 }
 
 const changePassword = function (data) {
-  console.log('data is ', data)
   return $.ajax({
     method: 'PATCH',
-    url: 'https://tic-tac-toe-wdi.herokuapp.com/change-password',
+    url: config.apiUrl + '/change-password',
     data: data,
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -32,7 +32,7 @@ const changePassword = function (data) {
 const signOut = function () {
   return $.ajax({
     method: 'DELETE',
-    url: 'https://tic-tac-toe-wdi.herokuapp.com/sign-out',
+    url: config.apiUrl + '/sign-out',
     headers: {
       Authorization: 'Token token=' + store.user.token
     }
@@ -42,7 +42,7 @@ const signOut = function () {
 const createGame = function () {
   return $.ajax({
     method: 'POST',
-    url: 'https://tic-tac-toe-wdi.herokuapp.com/games/',
+    url: config.apiUrl + '/games',
     headers: {
       Authorization: 'Token token=' + store.user.token
     }
@@ -53,8 +53,8 @@ const getGames = function (data) {
   data = JSON.stringify(data)
   return $.ajax({
     method: 'GET',
-    url: 'https://tic-tac-toe-wdi.herokuapp.com/games',
-    header: {
+    url: config.apiUrl + '/games?over=true',
+    headers: {
       Authorization: 'Token token=' + store.user.token
     },
     contentType: 'application/json',
@@ -62,16 +62,16 @@ const getGames = function (data) {
   })
 }
 
-const gameUpdate = function (data) {
+const updateGame = function (data) {
   data = JSON.stringify(data)
   return $.ajax({
-    url: 'https://tic-tac-toe-wdi.herokuapp.com/games/' + store.game.id,
+    url: config.apiUrl + '/games/' + store.game.id,
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token
     },
     contentType: 'application/json',
-    data
+    data: data
   })
 }
 module.exports = {
@@ -81,5 +81,5 @@ module.exports = {
   signOut: signOut,
   getGames: getGames,
   createGame: createGame,
-  gameUpdate: gameUpdate
+  updateGame: updateGame
 }
