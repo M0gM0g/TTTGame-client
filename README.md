@@ -36,11 +36,19 @@ JavaScript
 GIT/GITHUB
 SASS
 
-### Wire Frames
+### Wire Frames & User Story
 Web
 <a href="https://imgur.com/APMbmtW"><img src="https://i.imgur.com/APMbmtW.jpg?1" title="source: imgur.com" /></a>
 Mobile
 <a href="https://imgur.com/fuTyD63"><img src="https://i.imgur.com/fuTyD63.jpg" title="source: imgur.com" /></a>
+
+-As a recreactional user, I want the game to be simple and easy to use.
+-As a hardcore gamer, I want to be able to play against other players on different
+devices.
+-As a user I want the game to be aesthetically pleasing.
+-As a user I want to be able to create a login and record my results.
+-As a travelling user I want the game to function just as well on mobile as it does on web.
+
 
 ### Future Additions
 
