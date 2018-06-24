@@ -1,87 +1,54 @@
 # Project Title
 
-TTTGame is a tic-tac-toe game. 
+TTTGame
 
-## Getting Started
+## Game Description
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+TTTGame is a web based tic-tac-toe game, able to be played one at a
+time with your friends.
 
-### Prerequisites
+### How To Play
 
-What things you need to install the software and how to install them
+Simply go to https://m0gm0g.github.io/TTTGame-client/ and sign
+up using our easy to use form. After you have created an account, just sign in!
+Follow the instructions to start a new game and you can play tic-tac-toe against
+your friends!
 
-```
-Give examples
-```
+### Planning
 
-### Installing
+Being a visually oriented person, I first created a basic game board.
+This made it easier for me to grasp the game logic and how I would go about it.
+Step by step I had to figure out simply how to get an X or O to display, then
+how to get the values for those symbols and incorperate them into game logic.
+The game logic took me quite a while but I believe it was the most rewarding part.
+It forced me to stop and think about each action, where it should go and how it
+should be applied to determining a winner, loser, or a draw.
+The hardest part for me was understanding how the api would interact with my game.
+It came down to just slowing down and thinking about WHAT the api actually needs
+and HOW to get it there.
 
-A step by step series of examples that tell you how to get a development env running
+## Technologies Used
 
-Say what the step will be
+HTML
+SCSS
+jQUERY
+JavaScript
+GIT/GITHUB
+SASS
 
-```
-Give the example
-```
+### Wire Frames
+Web
+<img src="https://imgur.com/APMbmtW" title="Wire Frame 1"/>
+Mobile
+<img src="https://imgur.com/fuTyD63" title="Wire Frame 2"/>
 
-And repeat
+### Future Additions
 
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
-
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
+In the future I would spend more time working on the HTML and CSS aspects to make
+the game more visually appealling. I would also display detailed game information
+to the user.
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+Special Thanks To:
+* The instructors giving up their weekends to answer issues
+* Cohort 25 for all of the code talks
