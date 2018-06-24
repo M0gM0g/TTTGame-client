@@ -28,7 +28,7 @@ $('.col-xs-4').on('click', function (event) {
   const checkIfTie = function () {
     if (turnsTaken === 9 && store.gameOver === false) {
       $('.messages').html('This game is a tie!')
-      setTimeout(resetBoard, 5000)
+      setTimeout(resetBoard, 4000)
       store.gameOver = true
     }
   }
@@ -46,10 +46,10 @@ $('.col-xs-4').on('click', function (event) {
     store.gameOver = false
   }
 
-  if (turnsTaken === 9 && store.gameOver === false) {
-    $('.messages').html('This game is a tie!')
-    setTimeout(resetBoard, 5000)
-  }
+  // if (turnsTaken === 9 && store.gameOver === false) {
+  //   $('.messages').html('This game is a tie!')
+  //   setTimeout(resetBoard, 4000)
+  // }
 
   if (boxSelected.hasClass('X') || boxSelected.hasClass('O')) {
     $('.messages').html('This box has already been taken!')

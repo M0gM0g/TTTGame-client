@@ -13,38 +13,39 @@ const signUpSuccess = function (data) {
   $('#sign-up-form').hide()
   $('#sign-up').hide()
   $('.messages').html('You have successfully signed up! Please log in!')
-  setTimeout(clearMessages, 5000)
+  $('#sign-in-form, #sign-in, #sign-up, #sign-up-form, #change-password-form').trigger('reset')
+  setTimeout(clearMessages, 4000)
 }
 
 const signUpError = function (event) {
   $('.messages').html('There was an error signing up! Please try again.')
-  $('#sign-in-form, #sign-in, #sign-up, #sign-up-form').trigger('reset')
+  $('#sign-in-form, #sign-in, #sign-up, #sign-up-form, #change-password-form').trigger('reset')
 }
 
 const signInSuccess = function (data) {
   store.user = data.user
   $('#sign-in-form, #sign-in, #sign-up, #sign-up-form').hide()
   $('#change-password').show()
-  $('.messages').html('Welcome to Tic-Tac-Toe, Player X! Click New Game to Play!')
+  $('.messages').html('Welcome to Tic-Tac-Toe! Click New Game to Play! X goes first!')
   $('#sign-out').show()
   $('#change-password-form').show()
   $('#start-button').show()
-  $('#sign-in-form, #sign-in, #sign-up, #sign-up-form').trigger('reset')
+  $('#sign-in-form, #sign-in, #sign-up, #sign-up-form, #change-password-form').trigger('reset')
   $('#get-games').show()
 }
 
 const signInError = function (response) {
   $('.messages').html('Ooops! There was a problem signing in. Try again')
-  $('#sign-in-form, #sign-in, #sign-up, #sign-up-form').trigger('reset')
+  $('#sign-in-form, #sign-in, #sign-up, #sign-up-form, #change-password-form').trigger('reset')
   setTimeout(clearMessages, 3000)
 }
 
 const changePasswordSuccess = function (data) {
   $('.get-games-message').html('You successfully changed your password!')
-  setTimeout(clearGetGamesMessage, 5000)
+  setTimeout(clearGetGamesMessage, 4000)
   // $('.messages').html('Welcome to Tic-Tac-Toe, Player X! Click New Game to Play!')
   // setTimeout(clearMessages, 5000)
-  $('#change-password-form').trigger('reset')
+  $('#sign-in-form, #sign-in, #sign-up, #sign-up-form, #change-password-form').trigger('reset')
   // $('#change-password').hide()
   // $('#change-password-form').hide()
   // $('#change-password-button-only').show()
@@ -52,7 +53,7 @@ const changePasswordSuccess = function (data) {
 
 const changePasswordFailure = function (response) {
   $('.get-games-message').html('Ooops! Something went wrong, please try again')
-  setTimeout(clearGetGamesMessage, 5000)
+  setTimeout(clearGetGamesMessage, 4000)
   $('#sign-in-form, #sign-in, #sign-up, #sign-up-form, #change-password-form').trigger('reset')
 }
 
@@ -67,7 +68,8 @@ const signOutSuccess = function (response) {
   $('.row').hide()
   $('#get-games').hide()
   delete store.user
-  setTimeout(clearMessages, 5000)
+  $('#sign-in-form, #sign-in, #sign-up, #sign-up-form, #change-password-form').trigger('reset')
+  setTimeout(clearMessages, 4000)
   $('#sign-up-form').show()
   $('#sign-in-form').show()
 }
@@ -100,7 +102,7 @@ const createGameFailure = function (response) {
 
 const getGamesSuccess = function (data) {
   $('.get-games-message').html('You have played ' + data.games.length + ' games!')
-  setTimeout(clearGetGamesMessage, 5000)
+  setTimeout(clearGetGamesMessage, 4000)
 }
 // const getGamesSuccess = function (data) {
 //   store.game = data.game
@@ -112,7 +114,7 @@ const getGamesSuccess = function (data) {
 
 const getGamesFailure = function (response) {
   $('.messages').html('Oooops, something went wrong! Try again')
-  setTimeout(clearMessages, 5000)
+  setTimeout(clearMessages, 4000)
 }
 
 const updateGamesSuccess = function (data) {
