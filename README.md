@@ -38,9 +38,9 @@ SASS
 
 ### Wire Frames
 Web
-<img src="https://imgur.com/APMbmtW" title="Wire Frame 1"/>
+<a href="https://imgur.com/APMbmtW"><img src="https://i.imgur.com/APMbmtW.jpg?1" title="source: imgur.com" /></a>
 Mobile
-<img src="https://imgur.com/fuTyD63" title="Wire Frame 2"/>
+<a href="https://imgur.com/fuTyD63"><img src="https://i.imgur.com/fuTyD63.jpg" title="source: imgur.com" /></a>
 
 ### Future Additions
 
