@@ -1,5 +1,15 @@
 'use script'
 const store = require('./store')
+// const player = require('./index')
+// const resetBoard = function () {
+//   $('.col-xs-4').removeClass('X O')
+//   $('.col-xs-4').empty()
+//   $('.messages').empty()
+//   $('.container-fluid').hide()
+//   $('.row').hide()
+//   $('.messages').html('Click new game to play again!')
+//   $('#start-button').show()
+// }
 
 const clearMessages = function () {
   $('.messages').empty()
@@ -57,7 +67,8 @@ const changePasswordFailure = function (response) {
   $('#sign-in-form, #sign-in, #sign-up, #sign-up-form, #change-password-form').trigger('reset')
 }
 
-const signOutSuccess = function (response) {
+const signOutSuccess = function () {
+  delete store.user
   $('.messages').html('You have successfully signed out! Please sign up or log in to play!')
   $('#start-button').hide()
   $('#change-password').hide()
@@ -67,7 +78,6 @@ const signOutSuccess = function (response) {
   $('.get-games').hide()
   $('.row').hide()
   $('#get-games').hide()
-  delete store.user
   $('#sign-in-form, #sign-in, #sign-up, #sign-up-form, #change-password-form').trigger('reset')
   setTimeout(clearMessages, 4000)
   $('#sign-up-form').show()

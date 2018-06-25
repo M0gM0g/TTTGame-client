@@ -18,6 +18,19 @@ let player = 1
 let turnsTaken = 0
 store.gameOver = false
 
+const resetBoard = function () {
+  $('.col-xs-4').removeClass('X O')
+  $('.col-xs-4').empty()
+  $('.messages').empty()
+  $('.container-fluid').hide()
+  $('.row').hide()
+  $('.messages').html('Click new game to play again!')
+  $('#start-button').show()
+  turnsTaken = 0
+  player = 1
+  store.gameOver = false
+}
+
 $('.col-xs-4').on('click', function (event) {
   // turnsTaken = turnsTaken + 1
   // console.log(turnsTaken)
@@ -33,19 +46,6 @@ $('.col-xs-4').on('click', function (event) {
     }
   }
 
-  const resetBoard = function () {
-    $('.col-xs-4').removeClass('X O')
-    $('.col-xs-4').empty()
-    $('.messages').empty()
-    $('.container-fluid').hide()
-    $('.row').hide()
-    $('.messages').html('Click new game to play again!')
-    $('#start-button').show()
-    turnsTaken = 0
-    player = 1
-    store.gameOver = false
-  }
-
   // if (turnsTaken === 9 && store.gameOver === false) {
   //   $('.messages').html('This game is a tie!')
   //   setTimeout(resetBoard, 4000)
@@ -59,10 +59,10 @@ $('.col-xs-4').on('click', function (event) {
       boxSelected.addClass('X')
       $(this).html('X')
       // store.game.cells = $(this).val('X')
-      const idString = $(this).attr('id')
-      const indexNum = idString.substr(idString.length - 1)
-      // store.game.cells =
-      store.index = Number(indexNum)
+      // const idString = $(this).attr('id')
+      // const indexNum = idString.substr(idString.length - 1)
+      // // store.game.cells =
+      // store.index = Number(indexNum)
       // console.log('cell value is ' + store.game.cells)
 
       turnsTaken = turnsTaken + 1
@@ -81,10 +81,10 @@ $('.col-xs-4').on('click', function (event) {
         boxSelected.addClass('O')
         $(this).html('O')
         // store.game.cells = $(this).val()
-        const idString = $(this).attr('id')
-        const indexNum = idString.substr(idString.length - 1)
-        // store.game.cells =
-        store.index = Number(indexNum)
+        // const idString = $(this).attr('id')
+        // const indexNum = idString.substr(idString.length - 1)
+        // // store.game.cells =
+        // store.index = Number(indexNum)
         // console.log('cell value is ' + store.game.cells)
         turnsTaken = turnsTaken + 1
         checkIfTie()
@@ -138,6 +138,7 @@ $(() => {
   $('#sign-up-form').on('submit', authEvents.onSignUp)
   $('#sign-in-form').on('submit', authEvents.onSignIn)
   $('#sign-out').on('click', authEvents.onSignOut)
+  $('#sign-out').on('click', resetBoard)
   $('#change-password-form').on('submit', authEvents.onChangePassword)
   $('#change-password-button-only').on('click', authEvents.onClickChangePasswordButton)
   $('#start-button').on('click', authEvents.onCreateGame)
